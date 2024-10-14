@@ -1,28 +1,27 @@
-import { Search, X } from 'lucide-react'
-import { useForm } from 'react-hook-form'
+import { Search, X } from "lucide-react";
+import { useForm } from "react-hook-form";
 
-import { Button } from '@/components/ui/button'
-import { Input } from '@/components/ui/input'
-import { useNavigate } from 'react-router-dom'
+import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
+import { useNavigate } from "react-router-dom";
 
 export interface IFilterData {
-  name: string
+  name: string;
 }
 
 interface IProps {
-  onFilter: (data: IFilterData | null) => void
+  onFilter: (data: IFilterData | null) => void;
 }
 
 export function ProducerTableFilters({ onFilter }: IProps) {
-
-  const { register, handleSubmit, reset } = useForm<IFilterData>()
-  const navigate = useNavigate()
+  const { register, handleSubmit, reset } = useForm<IFilterData>();
+  const navigate = useNavigate();
   function handleNewProducer() {
-    navigate('/produtores/novo')
+    navigate("/produtores/novo");
   }
   function handleRemoveFilter() {
-    onFilter(null)
-    reset({ name: '' })
+    onFilter(null);
+    reset({ name: "" });
   }
   return (
     <div className="flex items-center justify-between">
@@ -34,7 +33,7 @@ export function ProducerTableFilters({ onFilter }: IProps) {
         <Input
           placeholder="Nome do produtor ou fazenda"
           className="h-8 w-[328px]"
-          {...register('name')}
+          {...register("name")}
         />
         <Button type="submit" variant="secondary" size="sm" className="h-8">
           <Search className="mr-2 h-4 w-4" />
@@ -54,5 +53,5 @@ export function ProducerTableFilters({ onFilter }: IProps) {
 
       <Button onClick={handleNewProducer}>Novo Produtor</Button>
     </div>
-  )
+  );
 }

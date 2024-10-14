@@ -62,7 +62,7 @@ const schema = z.object({
     .object({
       id: z.number(),
       description: z.string(),
-    })
+    }, {required_error: "É obrigatório adicionar pelo menos uma cultura" })
     .array()
     .min(1, "É obrigatório adicionar pelo menos uma cultura"),
 });

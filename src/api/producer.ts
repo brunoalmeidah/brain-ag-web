@@ -18,7 +18,53 @@ interface GetProducersProps {
   page: number;
 }
 
-const producers: Producer[] = [];
+const producers: Producer[] = [
+  {
+    id: "1",
+    producerName: "Produtor teste 1",
+    document: "02023890063",
+    city: "São Paulo",
+    state: "SP",
+    farmName: "Fazenda teste 1",
+    farmTotalArea: 3000,
+    farmUsableTotalArea: 2000,
+    farmVegetationTotalArea: 1000,
+    crops: [
+      { id: 1, description: "Milho" },
+      { id: 2, description: "Soja" },
+    ],
+  },
+  {
+    id: "2",
+    producerName: "Produtor teste 2",
+    document: "31481514024",
+    city: "São Paulo",
+    state: "SP",
+    farmName: "Fazenda teste 2",
+    farmTotalArea: 3000,
+    farmUsableTotalArea: 2000,
+    farmVegetationTotalArea: 1000,
+    crops: [
+      { id: 1, description: "Milho" },
+      { id: 2, description: "Soja" },
+    ],
+  },
+  {
+    id: "3",
+    producerName: "Produtor teste 3",
+    document: "31481514024",
+    city: "São Paulo",
+    state: "SP",
+    farmName: "Fazenda teste 3",
+    farmTotalArea: 3000,
+    farmUsableTotalArea: 2000,
+    farmVegetationTotalArea: 1000,
+    crops: [
+      { id: 1, description: "Milho" },
+      { id: 2, description: "Soja" },
+    ],
+  },
+];
 
 export async function createOrUpdateProducer(
   data: ProducerFormType & { id: string | undefined }
@@ -37,25 +83,28 @@ export async function createOrUpdateProducer(
 export async function getProducers(
   props: GetProducersProps | null | undefined
 ) {
-  const pageSize = 10
-  const initialIndex = ((props?.page ?? 0) - 1) * pageSize
-  const lastIndex = initialIndex + 10
+  const pageSize = 10;
+  const initialIndex = ((props?.page ?? 0) - 1) * pageSize;
+  const lastIndex = initialIndex + 10;
   if (props?.name) {
     const producersFiltered = producers.filter(
       (item) =>
         item.producerName
           .toLocaleLowerCase()
-          .includes(props?.name?.toLocaleLowerCase() || '') ||
+          .includes(props?.name?.toLocaleLowerCase() || "") ||
         item.farmName
           .toLocaleLowerCase()
-          .includes(props?.name?.toLocaleLowerCase() || '')
+          .includes(props?.name?.toLocaleLowerCase() || "")
     );
     return Promise.resolve({
       rows: producersFiltered.slice(initialIndex, lastIndex),
       count: producersFiltered.length,
     });
   }
-  return Promise.resolve({ rows: producers.slice(initialIndex, lastIndex), count: producers.length });
+  return Promise.resolve({
+    rows: producers.slice(initialIndex, lastIndex),
+    count: producers.length,
+  });
 }
 
 export async function getProducer(id: string) {

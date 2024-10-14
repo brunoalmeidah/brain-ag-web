@@ -1,7 +1,7 @@
-import { X } from 'lucide-react'
-import { useState } from 'react'
+import { X } from "lucide-react";
+import { useState } from "react";
 
-import { Button } from './ui/button'
+import { Button } from "./ui/button";
 import {
   Dialog,
   DialogClose,
@@ -10,14 +10,14 @@ import {
   DialogHeader,
   DialogTitle,
   DialogTrigger,
-} from './ui/dialog'
+} from "./ui/dialog";
 
 interface IProps {
-  children: React.ReactNode
-  onConfirmDialog: () => void
+  children: React.ReactNode;
+  onConfirmDialog: () => void;
 }
 export function ConfirmDeleteDialog({ children, onConfirmDialog }: IProps) {
-  const [open, setOpen] = useState(false)
+  const [open, setOpen] = useState(false);
   return (
     <Dialog open={open} onOpenChange={setOpen}>
       <DialogTrigger asChild>{children}</DialogTrigger>
@@ -37,5 +37,5 @@ export function ConfirmDeleteDialog({ children, onConfirmDialog }: IProps) {
         </DialogFooter>
       </DialogContent>
     </Dialog>
-  )
+  );
 }

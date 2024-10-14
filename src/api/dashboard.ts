@@ -16,8 +16,8 @@ const data = {
     { label: "RJ", value: 40 },
     { label: "MG", value: 50 },
     { label: "ES", value: 20 },
-  ]
-}
+  ],
+};
 export async function getDashboard() {
- return Promise.resolve(data)
+  return Promise.resolve(data);
 }
